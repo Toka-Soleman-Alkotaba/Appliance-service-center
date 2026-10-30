@@ -1,2 +1,27 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+using System;
+
+namespace ApplianceRepairCenter
+{
+    public abstract class Appliance
+    {
+        public string Name { get; set; }
+        public string Status { get; set; }
+        public decimal BaseRepairCost { get; set; }
+
+        protected Appliance(string name, string status, decimal baseRepairCost)
+        {
+            Name = name;
+            Status = status;
+            BaseRepairCost = baseRepairCost;
+        }
+
+        public abstract decimal CalculateRepairCost();
+
+        public virtual void DisplayInfo()
+        {
+            Console.WriteLine($"اسم الجهاز: {Name} | الحالة: {Status} | التكلفة الأساسية: {BaseRepairCost:N0} ل.س");
+        }
+    }
+}
